@@ -23,4 +23,6 @@ data class F1Credentials(
     val subToken: String? = null
 )
 
-class F1Token(val value: JWT)
+class F1Token(val value: JWT) {
+    fun isValid(): Boolean = !value.isExpired(0)
+}

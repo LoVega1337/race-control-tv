@@ -17,7 +17,7 @@ class CredentialsService @Inject constructor(
 
     suspend fun hasValidF1Credentials(): Boolean = withContext(Dispatchers.IO) {
         val token = f1CredentialsRepository.getToken() ?: return@withContext false
-        return@withContext !token.value.isExpired(0)
+        return@withContext token.isValid()
     }
 
     fun getToken() = f1CredentialsRepository.getToken()
