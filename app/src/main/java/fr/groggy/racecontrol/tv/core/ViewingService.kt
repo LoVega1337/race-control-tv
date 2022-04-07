@@ -41,7 +41,7 @@ class ViewingService @Inject constructor(
     }
 
     private suspend fun getViewingOrThrow(channelId: String?, contentId: String): F1TvViewing {
-        val token = tokenService.loadAndGetF1Token()
+        val token = tokenService.getToken()
         return f1Tv.getViewing(channelId, contentId, token.value)
     }
 
