@@ -40,6 +40,8 @@ class F1TvChannelId(val value: String)
 
 sealed class F1TvBasicChannelType {
     companion object {
+        object International : F1TvBasicChannelType()
+        object F1Live : F1TvBasicChannelType()
         object Wif : F1TvBasicChannelType()
         object PitLane : F1TvBasicChannelType()
         object Tracker : F1TvBasicChannelType()
@@ -50,6 +52,8 @@ sealed class F1TvBasicChannelType {
             when(type) {
                 "wif" -> Wif
                 "additional" -> when(name.toLowerCase(Locale.ROOT)) {
+                    "international" -> International
+                    "f1live" -> F1Live
                     "pit lane" -> PitLane
                     "tracker" -> Tracker
                     "data" -> Data

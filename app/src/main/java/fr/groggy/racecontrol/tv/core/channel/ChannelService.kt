@@ -28,7 +28,7 @@ class ChannelService @Inject constructor(
         return F1TvBasicChannel(
             channelId = null,
             contentId = contentId,
-            F1TvBasicChannelType.Companion.Wif
+            F1TvBasicChannelType.Companion.Wif // Eventually needs to be changed to International?
         )
     }
 }
