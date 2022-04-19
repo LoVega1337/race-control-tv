@@ -1,6 +1,7 @@
 package fr.groggy.racecontrol.tv.f1tv
 
 import android.util.Log
+import androidx.core.net.toUri
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import fr.groggy.racecontrol.tv.core.InstantPeriod
@@ -218,30 +219,34 @@ class F1TvClient @Inject constructor(
         try {
             val response = get(LIST_CHANNELS.format(getCurrentLocale(), contentId), channelResponseJsonAdapter)
             return response.resultObj.containers.firstOrNull()?.metadata?.additionalStreams
-                ?.sortedBy { it.racingNumber }
+                ?.sortedBy { it.default }
                 ?.map {
-                val channelIdAndContentId = it.playbackUrl.split("CONTENT/PLAY?")
-                    .last()
-                    .split('&')
 
                 if (it.type == "obc") {
                     F1TvOnboardChannel(
-                        channelId = channelIdAndContentId.first().split("=").last(),
-                        contentId = channelIdAndContentId.last().split("=").last(),
+                        it.channelId,
+                        contentId,
                         name = "${it.driverFirstName} ${it.driverLastName} ${it.racingNumber}",
                         background = it.hex,
                         subTitle = it.teamName,
                         driver = F1TvDriverId("") //TODO - do we have to load the driver ?
                     )
                 } else {
+                    val channelId = if (it.playbackUrl.contains("channelId")) {
+                        it.channelId
+                    } else {
+                        null
+                    }
+
                     F1TvBasicChannel(
-                        channelId = channelIdAndContentId.first().split("=").last(),
-                        contentId = channelIdAndContentId.last().split("=").last(),
+                        channelId,
+                        contentId,
                         type = F1TvBasicChannelType.from(it.type, it.title)
                     )
                 }
             } ?: listOf()
         } catch (e: Exception) {
+            e.printStackTrace()
             return listOf()
         }
     }

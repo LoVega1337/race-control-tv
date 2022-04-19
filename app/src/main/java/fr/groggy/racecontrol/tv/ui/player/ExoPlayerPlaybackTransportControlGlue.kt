@@ -16,7 +16,7 @@ import com.google.android.exoplayer2.analytics.AnalyticsListener.EventTime
 import com.google.android.exoplayer2.ext.leanback.LeanbackPlayerAdapter
 import com.google.android.exoplayer2.source.MediaLoadData
 import com.google.android.exoplayer2.source.TrackGroupArray
-import com.google.android.exoplayer2.text.TextOutput
+import com.google.android.exoplayer2.text.Cue
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import fr.groggy.racecontrol.tv.R
@@ -26,7 +26,7 @@ import kotlin.math.roundToInt
 
 class ExoPlayerPlaybackTransportControlGlue(
     private val activity: FragmentActivity,
-    private val player: ExoPlayer,
+    player: ExoPlayer,
     private val trackSelector: DefaultTrackSelector
 ) : PlaybackTransportControlGlue<LeanbackPlayerAdapter>(
     activity,
@@ -59,10 +59,6 @@ class ExoPlayerPlaybackTransportControlGlue(
         activity.findViewById(R.id.closed_captions)
     }
 
-    private val closedCaptionTextOutput = TextOutput { cues ->
-        closedCaptionsTextView.text = cues.joinToString { it.text ?: "" }
-    }
-
     private var currentVideoFormat: Format? = null
     private var currentAudioFormat: Format? = null
 
@@ -80,7 +76,7 @@ class ExoPlayerPlaybackTransportControlGlue(
             add(fastFormatAction)
             add(selectAudioAction)
             add(resolutionSelectionAction)
-            //add(closedCaptionAction)
+            add(closedCaptionAction)
         }
     }
 
@@ -111,11 +107,9 @@ class ExoPlayerPlaybackTransportControlGlue(
         if (closedCaptionAction.index == PlaybackControlsRow.ClosedCaptioningAction.INDEX_OFF) {
             closedCaptionAction.index = PlaybackControlsRow.ClosedCaptioningAction.INDEX_ON
             closedCaptionsTextView.visibility = View.VISIBLE
-            //player.addTextOutput(closedCaptionTextOutput)
         } else {
             closedCaptionAction.index = PlaybackControlsRow.ClosedCaptioningAction.INDEX_OFF
             closedCaptionsTextView.visibility = View.GONE
-            //player.removeTextOutput(closedCaptionTextOutput)
         }
     }
 
@@ -130,6 +124,12 @@ class ExoPlayerPlaybackTransportControlGlue(
                 trackSelector.setParameters(parameters)
             }
             dialog.show(activity.supportFragmentManager, null)
+        }
+    }
+
+    override fun onCues(eventTime: EventTime, cues: MutableList<Cue>) {
+        if (closedCaptionAction.index == PlaybackControlsRow.ClosedCaptioningAction.INDEX_ON) {
+            closedCaptionsTextView.text = cues.joinToString { it.text ?: "" }
         }
     }
 

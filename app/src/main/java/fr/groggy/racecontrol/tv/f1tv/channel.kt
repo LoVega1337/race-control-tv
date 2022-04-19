@@ -29,8 +29,10 @@ data class F1TvChannelAdditionalStream(
     val driverFirstName: String?,
     val driverLastName: String?,
     val racingNumber: Int?,
+    val default: Boolean,
     val driverImg: String?, //For some reason this is always empty
     val playbackUrl: String,
+    val channelId: String,
     val teamName: String?,
     val hex: String?,
     val type: String
@@ -40,7 +42,6 @@ class F1TvChannelId(val value: String)
 
 sealed class F1TvBasicChannelType {
     companion object {
-        object International : F1TvBasicChannelType()
         object F1Live : F1TvBasicChannelType()
         object Wif : F1TvBasicChannelType()
         object PitLane : F1TvBasicChannelType()
@@ -52,7 +53,6 @@ sealed class F1TvBasicChannelType {
             when(type) {
                 "wif" -> Wif
                 "additional" -> when(name.toLowerCase(Locale.ROOT)) {
-                    "international" -> International
                     "f1live" -> F1Live
                     "pit lane" -> PitLane
                     "tracker" -> Tracker

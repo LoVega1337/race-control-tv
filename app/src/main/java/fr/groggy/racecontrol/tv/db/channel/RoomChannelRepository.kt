@@ -3,7 +3,6 @@ package fr.groggy.racecontrol.tv.db.channel
 import fr.groggy.racecontrol.tv.core.channel.ChannelRepository
 import fr.groggy.racecontrol.tv.db.RaceControlTvDatabase
 import fr.groggy.racecontrol.tv.f1tv.*
-import fr.groggy.racecontrol.tv.f1tv.F1TvBasicChannelType.Companion.International
 import fr.groggy.racecontrol.tv.f1tv.F1TvBasicChannelType.Companion.F1Live
 import fr.groggy.racecontrol.tv.f1tv.F1TvBasicChannelType.Companion.Data
 import fr.groggy.racecontrol.tv.f1tv.F1TvBasicChannelType.Companion.PitLane
@@ -23,7 +22,6 @@ class RoomChannelRepository @Inject constructor(
 
     companion object {
         private const val WIF = "WIF"
-        private const val INTERNATIONAL = "INTERNATIONAL"
         private const val F1LIVE = "F1LIVE"
         private const val PIT_LANE = "PIT_LANE"
         private const val TRACKER = "TRACKER"
@@ -52,7 +50,6 @@ class RoomChannelRepository @Inject constructor(
             contentId = channel.contentId,
             type = when (channel.type) {
                 WIF -> Wif
-                INTERNATIONAL -> International
                 F1LIVE -> F1Live
                 PIT_LANE -> PitLane
                 TRACKER -> Tracker
@@ -74,7 +71,6 @@ class RoomChannelRepository @Inject constructor(
             is F1TvBasicChannel -> {
                 val (type, name) = when (channel.type) {
                     Wif -> WIF to null
-                    International -> INTERNATIONAL to null
                     F1Live -> F1LIVE to null
                     PitLane -> PIT_LANE to null
                     Tracker -> TRACKER to null
