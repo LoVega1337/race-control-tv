@@ -53,7 +53,7 @@ class DownloadApk(var context: Context) : AppCompatActivity() {
             val progress = values[0]
             if (progress != null) {
                 bar.progress = progress
-                msg = if (progress > 99) "Finishing... " else "Downloading... $progress%"
+                msg = if (progress > 99) "Finishing..." else "Downloading... $progress%"
             }
 
             bar.apply {
