@@ -16,10 +16,12 @@ import fr.groggy.racecontrol.tv.core.season.SeasonService
 import fr.groggy.racecontrol.tv.f1tv.Archive
 import fr.groggy.racecontrol.tv.ui.season.browse.SeasonBrowseActivity
 import fr.groggy.racecontrol.tv.ui.settings.SettingsActivity
+import fr.groggy.racecontrol.tv.upd.DownloadApk
 import fr.groggy.racecontrol.tv.utils.coroutines.schedule
 import org.threeten.bp.Duration
 import org.threeten.bp.Year
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class HomeActivity : FragmentActivity(R.layout.activity_home) {
@@ -49,6 +51,14 @@ class HomeActivity : FragmentActivity(R.layout.activity_home) {
 
         findViewById<View>(R.id.settings).setOnClickListener {
             startActivity(SettingsActivity.intent(this))
+        }
+
+        findViewById<View>(R.id.updateApp).setOnClickListener {
+            val url = "https://github.com/leonardoxh/race-control-tv/releases/download/v2.6.2/app-release.apk"
+
+            val downloadApk = DownloadApk(this@HomeActivity)
+
+            downloadApk.startDownloadingApk(url)
         }
     }
 
