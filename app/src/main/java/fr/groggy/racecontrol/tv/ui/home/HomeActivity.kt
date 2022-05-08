@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import fr.groggy.racecontrol.tv.BuildConfig
 import fr.groggy.racecontrol.tv.R
 import fr.groggy.racecontrol.tv.core.season.SeasonService
 import fr.groggy.racecontrol.tv.f1tv.Archive
@@ -52,6 +53,10 @@ class HomeActivity : FragmentActivity(R.layout.activity_home) {
         findViewById<View>(R.id.settings).setOnClickListener {
             startActivity(SettingsActivity.intent(this))
         }
+
+        val currentVersion = BuildConfig.VERSION_NAME // Getting current version (eg. comparing with Version)
+        val currentVersionText: TextView = findViewById<TextView>(R.id.currentVersionText)
+        currentVersionText.text = currentVersion // Showing Version number top left
 
         findViewById<View>(R.id.updateApp).setOnClickListener {
             val url = "https://github.com/leonardoxh/race-control-tv/releases/latest/download/app-release.apk"

@@ -46,4 +46,9 @@
   <string name="settings_logout_title">Abmelden</string>
   <string name="donations_explanation_summary">Scannen Sie den unteren QR Code mit Ihrem Smartphone, Sie werden zur BuyMeACoffee Seite weitergeleitet wo Sie spenden können</string>
   <string name="updateapp_content_description">Update</string>
+  <string name="new_version_available">Neue Version verfügbar!</string>
+  <string name="update_downloaded">Update heruntergeladen</string>
+  <string name="update_error">Fehler: Bitte noch einmal versuchen</string>
+  <string name="update_downloading">Herunterladen…</string>
+  <string name="update_finishing">Finalisieren…</string>
 </resources>

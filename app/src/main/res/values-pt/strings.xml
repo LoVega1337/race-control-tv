@@ -46,4 +46,9 @@
     <string name="settings_logout_title">Logout</string>
     <string name="donations_explanation_summary">Scan the QR code bellow with your phone, you will be redirected to the BuyMeACoffee page where you can donate</string>
     <string name="updateapp_content_description">Update</string>
+    <string name="new_version_available">New Version available!</string>
+    <string name="update_downloaded">Update downloaded</string>
+    <string name="update_error">Error: Try Again</string>
+    <string name="update_downloading">Downloading…</string>
+    <string name="update_finishing">Finishing…</string>
 </resources>

@@ -47,4 +47,9 @@
     <string name="settings_logout_title">Wyloguj</string>
     <string name="donations_explanation_summary">Zeskanuj poniższy kod QR telefonem, by zostać przekierowanym do serwisu BuyMyACoffee umożliwiającego przekazanie darowizny</string>
     <string name="updateapp_content_description">Update</string>
+    <string name="new_version_available">New Version available!</string>
+    <string name="update_downloaded">Update downloaded</string>
+    <string name="update_error">Error: Try Again</string>
+    <string name="update_downloading">Downloading…</string>
+    <string name="update_finishing">Finishing…</string>
 </resources>

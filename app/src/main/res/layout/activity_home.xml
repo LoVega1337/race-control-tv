@@ -1,32 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/currentVersion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/updateApp"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_gravity="end"
-        android:layout_margin="8dp"
-        android:background="@drawable/icon_select_background"
-        android:clickable="true"
-        android:contentDescription="@string/updateapp_content_description"
-        android:focusable="true"
-        android:src="@drawable/ic_baseline_system_update_alt_24" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp">
 
-    <ImageView
-        android:id="@+id/settings"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_gravity="end"
-        android:focusable="true"
-        android:clickable="true"
-        android:src="@drawable/ic_settings"
-        android:background="@drawable/icon_select_background"
-        android:contentDescription="@string/settings_content_description"
-        android:layout_margin="8dp"/>
+        <ImageView
+            android:id="@+id/updateApp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:layout_margin="8dp"
+            android:layout_marginStart="904dp"
+            android:layout_marginTop="101dp"
+            android:layout_marginEnd="904dp"
+            android:layout_marginBottom="37dp"
+            android:background="@drawable/icon_select_background"
+            android:clickable="true"
+            android:contentDescription="@string/updateapp_content_description"
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_system_update_alt_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/settings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:layout_margin="8dp"
+            android:layout_marginStart="400dp"
+            android:layout_marginTop="101dp"
+            android:layout_marginEnd="400dp"
+            android:layout_marginBottom="37dp"
+            android:background="@drawable/icon_select_background"
+            android:clickable="true"
+            android:contentDescription="@string/settings_content_description"
+            android:focusable="true"
+            android:src="@drawable/ic_settings"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/updateApp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/currentVersionText"
+            android:layout_width="91dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="766dp"
+            android:layout_marginBottom="53dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/updateApp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/newVersionText"
+            android:layout_width="380dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="702dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/new_version_available"
+            android:textAlignment="viewEnd"
+            android:textSize="24sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/updateApp"
+            app:layout_constraintHorizontal_bias="0.86"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.42000002" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -36,14 +93,17 @@
             android:id="@+id/teaserImage"
             android:layout_width="wrap_content"
             android:layout_height="180dp"
-            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/teaser_item_background"
             android:clickable="true"
             android:contentDescription="@string/teaser_image_description"
-            android:focusable="true"
-            android:scaleType="centerCrop"
             android:cropToPadding="true"
+            android:focusable="true"
             android:padding="2dp"
-            android:background="@drawable/teaser_item_background"
+            android:scaleType="centerCrop"
             android:src="@drawable/current_season" />
 
         <TextView
@@ -52,8 +112,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
-            android:textColor="@android:color/white"
             android:textAlignment="center"
+            android:textColor="@android:color/white"
             android:textSize="36sp" />
     </RelativeLayout>
 

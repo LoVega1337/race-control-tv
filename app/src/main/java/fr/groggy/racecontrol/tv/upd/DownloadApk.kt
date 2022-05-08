@@ -12,6 +12,7 @@ import android.webkit.URLUtil
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import fr.groggy.racecontrol.tv.R
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -40,7 +41,7 @@ class DownloadApk(var context: Context) : AppCompatActivity() {
             super.onPreExecute()
             bar = ProgressDialog(context).apply {
                 setCancelable(false)
-                setMessage("Downloading...")
+                setMessage(context.getResources().getString(R.string.update_downloading))
                 isIndeterminate = true
                 setCanceledOnTouchOutside(false)
                 show()
@@ -53,7 +54,7 @@ class DownloadApk(var context: Context) : AppCompatActivity() {
             val progress = values[0]
             if (progress != null) {
                 bar.progress = progress
-                msg = if (progress > 99) "Finishing..." else "Downloading... $progress%"
+                msg = if (progress > 99) context.getResources().getString(R.string.update_finishing) else "${context.getResources().getString(R.string.update_downloading)} $progress%"
             }
 
             bar.apply {
@@ -67,9 +68,9 @@ class DownloadApk(var context: Context) : AppCompatActivity() {
             super.onPostExecute(result)
             bar.dismiss()
             if (result != null && result) {
-                Toast.makeText(context, "Update downloaded", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.update_downloaded, Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(context, "Error: Try Again", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.update_error, Toast.LENGTH_SHORT).show()
             }
         }
 
