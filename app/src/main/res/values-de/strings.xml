@@ -45,4 +45,5 @@
   <string name="settings_donations_summary">Unterstützen Sie dieses Projekt in dem Sie dem Entwickler ein Bier spenden</string>
   <string name="settings_logout_title">Abmelden</string>
   <string name="donations_explanation_summary">Scannen Sie den unteren QR Code mit Ihrem Smartphone, Sie werden zur BuyMeACoffee Seite weitergeleitet wo Sie spenden können</string>
+  <string name="updateapp_content_description">Update</string>
 </resources>

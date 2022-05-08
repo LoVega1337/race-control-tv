@@ -55,9 +55,7 @@ class HomeActivity : FragmentActivity(R.layout.activity_home) {
 
         findViewById<View>(R.id.updateApp).setOnClickListener {
             val url = "https://github.com/leonardoxh/race-control-tv/releases/latest/download/app-release.apk"
-
             val downloadApk = DownloadApk(this@HomeActivity)
-
             downloadApk.startDownloadingApk(url)
         }
     }

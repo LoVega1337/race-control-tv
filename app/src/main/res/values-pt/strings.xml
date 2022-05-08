@@ -45,4 +45,5 @@
     <string name="settings_donations_summary">Support the project by buying the developer a beer</string>
     <string name="settings_logout_title">Logout</string>
     <string name="donations_explanation_summary">Scan the QR code bellow with your phone, you will be redirected to the BuyMeACoffee page where you can donate</string>
+    <string name="updateapp_content_description">Update</string>
 </resources>

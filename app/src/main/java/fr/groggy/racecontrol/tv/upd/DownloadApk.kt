@@ -23,7 +23,7 @@ import java.net.URL
 class DownloadApk(var context: Context) : AppCompatActivity() {
 
     @JvmOverloads
-    fun startDownloadingApk(url: String, fileName: String = "App Update") {
+    fun startDownloadingApk(url: String, fileName: String = "RaceControlTV") {
         if (URLUtil.isValidUrl(url)) {
             DownloadNewVersion(context, url, fileName).execute()
         }
@@ -67,7 +67,7 @@ class DownloadApk(var context: Context) : AppCompatActivity() {
             super.onPostExecute(result)
             bar.dismiss()
             if (result != null && result) {
-                Toast.makeText(context, "Update Done", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Update downloaded", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context, "Error: Try Again", Toast.LENGTH_SHORT).show()
             }
@@ -79,10 +79,9 @@ class DownloadApk(var context: Context) : AppCompatActivity() {
             try {
                 val path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString() + "/"
                 var outputFile = File("$path$fileName.apk")
-                var repetition = 1
-                while (outputFile.exists()) {
-                    outputFile = File("$path$fileName ($repetition).apk")
-                    repetition++
+                if (outputFile.exists()) {
+                    outputFile.delete()
+                    outputFile = File("$path$fileName.apk")
                 }
 
                 val directory = File(path)
