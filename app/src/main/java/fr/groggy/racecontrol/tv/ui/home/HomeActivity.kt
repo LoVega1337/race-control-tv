@@ -1,5 +1,6 @@
 package fr.groggy.racecontrol.tv.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
@@ -44,6 +45,7 @@ class HomeActivity : FragmentActivity(R.layout.activity_home) {
     @Inject internal lateinit var seasonService: SeasonService
     private var teaserImage: ImageView? = null
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -99,6 +101,7 @@ class HomeActivity : FragmentActivity(R.layout.activity_home) {
                 runOnUiThread {
                     var newVersionText: TextView? = null
                     newVersionText = findViewById(R.id.newVersionText)
+                    newVersionText.text = "${this.getResources().getString(R.string.new_version_available)}: $completeResponse!"
                     newVersionText.visibility = View.VISIBLE
                 }
             }
