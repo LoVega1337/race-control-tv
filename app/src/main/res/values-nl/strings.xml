@@ -51,4 +51,5 @@
     <string name="update_error">Error: Try Again</string>
     <string name="update_downloading">Downloading…</string>
     <string name="update_finishing">Finishing…</string>
+    <string name="no_update_available">You\'re using the latest version</string>
 </resources>

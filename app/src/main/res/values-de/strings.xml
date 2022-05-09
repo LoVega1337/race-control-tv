@@ -51,4 +51,5 @@
   <string name="update_error">Fehler: Bitte noch einmal versuchen</string>
   <string name="update_downloading">Herunterladen…</string>
   <string name="update_finishing">Finalisieren…</string>
+  <string name="no_update_available">Sie benutzen bereits die neueste Version</string>
 </resources>
