@@ -46,6 +46,16 @@ class SignInActivity : ComponentActivity() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
 
+                val username = "username";
+                val password = "password";
+
+                val js = "javascript:" +
+                        "document.querySelector('input.txtLogin').value = '" + username + "';"  +
+                        "document.querySelector('input.txtPassword').value = '" + password + "';"  +
+                        "document.getElementsByClassName('btn btn-primary')[0].click()";
+
+                loginWebView.loadUrl(js)
+
                 if (credentialsService.storeToken(CookieManager.getInstance().getCookie(url))) {
                     startActivity(HomeActivity.intent(this@SignInActivity))
                     finish()
